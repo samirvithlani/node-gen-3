@@ -1,0 +1,12 @@
+console.log(obj.add(100,200)); colors change
+colors chalk
+
+
+https://www.mockaroo.com/
+hw 18 -11 2022
+-------------
+
+name starts with 's' -->  print
+find palindrome name from firstname  'naman'
+copy only emails to email.txt
+
