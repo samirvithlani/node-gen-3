@@ -9,4 +9,27 @@ hw 18 -11 2022
 name starts with 's' -->  print
 find palindrome name from firstname  'naman'
 copy only emails to email.txt
+---------------------------------------------
+
+user.json [{id,name,age}{}{}]
+
+get name --> amit
+if amit --> file
+not macth excpetion throw
+return json
+
+
+
+/get // age
+
+file age 
+20 >  all record json with http status
+
+if not any single  if else --> 404
+
+
+
+
+
+
 
