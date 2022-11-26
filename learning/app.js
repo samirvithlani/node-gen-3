@@ -1,74 +1,34 @@
 const express = require("express");
 const app = express();
-
+const mongoose = require("mongoose");
+const userRouter = require("./routes/UserRoutes");
 //create server using express
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const PORT = 3000;
+
+app.use('/user',userRouter)
+
+
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT);
 })
-
 //3000 <-local system 127.0.0.1:3000 
-app.get("/user",(req,res)=>{
+//esablish db connection using mongoose
+mongoose.connect("mongodb://localhost:27017/mongogen",{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    keepAlive:true,
+    socketTimeoutMS:30000,
 
-    //res.send("hello user")
-    //res.status(200).send("Hello user")
-    res.json({
-        name:"abc",
-        age:20
-    })
-})
 
-app.post("/user",(req,res)=>{
-
-    console.log(req.body.name)
-    res.json({
-        message:"data added..",
-        object:req.body
-    })
-})
-
-app.delete("/user/:id",(req,res)=>{
-
-    try{
-    let id = req.params.id;
-    if(id==0){
-        throw new Error("id is not valid")
+},(err)=>{
+    if(err){
+        console.log("Error in db connection",err);
     }
     else{
-        res.json({
-            message:"data deleted..",
-            id:id
-        })
+        console.log("Db connected successfully");
     }
-    
-    }catch(err){
-
-        res.status(402).send(err.message)
-    }
-    
-})
-app.put("/user/:name",(req,res)=>{
-
-
-        let name = req.params.name;
-        if(name==="amit"){
-
-            res.json({
-                message:"data updated..",
-                object:req.body
-            })
-        }
-        else{
-            res.status(402).send("name is not valid")
-        }
-
-
 })
 
-app.get("/user/:id",(req,res)=>{
 
-    res.send("hello"+req.params.id)
-
-})

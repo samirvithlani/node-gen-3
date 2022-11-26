@@ -27,6 +27,13 @@ file age
 
 if not any single  if else --> 404
 
+----------------------------------------
+create student model  --> add fetch all
+    --->
+create product model --> add fetch all
+
+    -->thursday
+
 
 
 
