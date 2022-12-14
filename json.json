@@ -1,0 +1,60 @@
+{
+    "message": "Cart fetched successfully",
+    "data": [
+        {
+            "_id": "6399e625a166a27d2aec944e",
+            "products": [
+                {
+                    "_id": "6399e4a46d203b4cfb887536",
+                    "name": "iphone13",
+                    "price": 58000,
+                    "qty": 120,
+                    "__v": 0
+                }
+            ],
+            "user": {
+                "_id": "63822c9c89dfc1c1e9630f62",
+                "name": "amit1",
+                "email": "amit@gmail.com2",
+                "password": "amit123",
+                "age": 24,
+                "isMarried": false,
+                "__v": 0
+            },
+            "qty": 2,
+            "total": 0,
+            "__v": 0
+        },
+        {
+            "_id": "6399e64ca166a27d2aec9450",
+            "products": [
+                {
+                    "_id": "6399e4a46d203b4cfb887536",
+                    "name": "iphone13",
+                    "price": 58000,
+                    "qty": 120,
+                    "__v": 0
+                },
+                {
+                    "_id": "6399e4bf6d203b4cfb887538",
+                    "name": "iphone14",
+                    "price": 85000,
+                    "qty": 12,
+                    "__v": 0
+                }
+            ],
+            "user": {
+                "_id": "63822dd589dfc1c1e9630f68",
+                "name": "rajvi",
+                "email": "rajvi@gmail.com",
+                "password": "rajvi@gmail.com",
+                "age": 28,
+                "isMarried": true,
+                "__v": 0
+            },
+            "qty": 10,
+            "total": 0,
+            "__v": 0
+        }
+    ]
+}
