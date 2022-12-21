@@ -56,3 +56,19 @@ exports.getCartById = (req,res)=>{
 
 
 }
+//get cart by user id
+exports.getCartByUserId = (req,res)=>{
+    cartSchema.findOne({user:req.params.id}).populate('user').populate('products').exec((err,data)=>{
+        if(err){
+            res.status(500).json({
+                message: "Error in getting cart",
+            })
+        }
+        else{
+            res.status(200).json({
+                message: "Cart fetched successfully",
+                data: data
+            })
+        }
+    })
+}
