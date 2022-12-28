@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 //create an object of schema
 const schema = mongoose.Schema;
-
 //created an obhect of userSchame
 const userSchema = schema({
 

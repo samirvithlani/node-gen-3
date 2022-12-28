@@ -1,5 +1,7 @@
 const multer = require('multer');
 const path = require('path');
+const uploadSchema = require('../model/UploadSchema');
+const readFromExcell = require('../util/ReadDataFromExcel');
 
 //storage
 const storage = multer.diskStorage({
@@ -17,7 +19,7 @@ const upload = multer({
    
 }).single('file')
 
-
+exports.myData=[];
 exports.uploadFile = (req,res)=>{
 
     upload(req,res,(err)=>{
@@ -32,18 +34,41 @@ exports.uploadFile = (req,res)=>{
                 })
             }
             else{
-                console.log(req.file.mimetype);
-                console.log(req.file.size/1000);
+                
+                var data = readFromExcell.readData(req.file.path);
+                this.myData = data;
+                console.log("data",data);
+                let abspath = path.resolve('../uploads',req.file.originalname);
+                console.log("abspath",abspath);
+                const upload1 = new uploadSchema({
 
-                res.status(200).json({
-                    message:'File uploaded successfully',
-                    file:`uploads/${req.file.originalname}`
+                    name:req.file.originalname,
+                    path:abspath,
+                    size:req.file.size,
+                    type:req.file.mimetype
+
                 })
+                upload1.save((err,data)=>{
+                    if(err){
+                        res.status(400).json({
+                            message:'Error in saving file',
+                        })
+                    }
+                    else{
+                        res.status(200).json({
+                            message:'File uploaded successfully',
+                            file:`uploads/${req.file.originalname}`
+                        })
+                    }
+
+                })
+
+                // res.status(200).json({
+                //     message:'File uploaded successfully',
+                //     file:`uploads/${req.file.originalname}`
+                // })
             }
         }
     })
-
-
-
 
 }

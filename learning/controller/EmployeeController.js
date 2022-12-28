@@ -1,4 +1,5 @@
 const employeeSchema = require('../model/EmployeeSchema');
+var myData = require('../controller/UploadController');
 
 
 exports.createEmployee = ((req,res)=>{
@@ -41,7 +42,6 @@ exports.getAllEmployee = ((req,res)=>{
 
 
 
-
     // employeeSchema.find((err,data)=>{
     //     if(err){
     //         res.status(500).json({
@@ -56,4 +56,21 @@ exports.getAllEmployee = ((req,res)=>{
     //     }
     // })
 
+})
+
+exports.insertBulkEmployee = ((req,res)=>{
+    employeeSchema.insertMany(myData,(err,data)=>{
+        if(err){
+            res.status(500).json({
+                message:err.message || "Some error occured while creating the employee"
+            })
+        }
+        else{
+            res.status(201).json({
+                message:"Employee created successfully",
+                data:data
+            })
+        }
+
+    })
 })

@@ -8,6 +8,7 @@ const productRoutes = require("./routes/ProductRoutes");
 const cartRoutes = require("./routes/CartRoutes");
 const uploadRoutes = require("./routes/UploadRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
+const roleRoutes = require("./routes/RoleRoutes");
 //create server using express
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -20,6 +21,7 @@ app.use('/product',productRoutes)
 app.use('/cart',cartRoutes)
 app.use('/upload',uploadRoutes)
 app.use('/student',studentRoutes)
+app.use('/role',roleRoutes)
 
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT);
