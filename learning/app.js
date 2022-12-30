@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser'); 
+
 const userRouter = require("./routes/UserRoutes");
 const departmentRoutes = require("./routes/DepartmentRoutes");
 const employeeRoutes = require("./routes/EmployeeRoutes");
@@ -9,9 +11,10 @@ const cartRoutes = require("./routes/CartRoutes");
 const uploadRoutes = require("./routes/UploadRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const roleRoutes = require("./routes/RoleRoutes");
+const signupRoutes = require("./routes/SignupRoutes");
 //create server using express
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+
 const PORT = 3000;
 
 app.use('/user',userRouter)
@@ -22,6 +25,7 @@ app.use('/cart',cartRoutes)
 app.use('/upload',uploadRoutes)
 app.use('/student',studentRoutes)
 app.use('/role',roleRoutes)
+app.use('/signup',signupRoutes)
 
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT);
