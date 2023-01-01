@@ -39,6 +39,33 @@ exports.signup = (req, res) => {
     })
     
 }
+
+exports.login = async(req,res)=>{
+    const password  = req.body.password;
+    
+    
+    const data = await SignupSchema.findOne({name:req.body.name,password:password})
+    console.log(data); //hashed password
+    if(data){
+        const compare = await bcrypt.compare(req.body.password,data.password)
+        console.log(compare);
+        if(compare){
+            res.status(200).json({
+                message:"Login successful",
+                data:data
+            })
+        }
+        else{
+            res.send("Login failed")
+        }
+    }
+    else{
+        res.status(400).json({
+            message:"User or password not found"
+        })
+    }
+}
+
 exports.validate = (req, res) => {
     const {name,password} = req.body;
 
