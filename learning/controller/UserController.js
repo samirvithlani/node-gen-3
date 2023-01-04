@@ -1,4 +1,5 @@
 const userSchema = require("../model/UsersSchema");
+const generateToken = require("../util/generateToken");
 
 exports.createUser = (req, res) => {
   //req.body > save
@@ -103,6 +104,46 @@ exports.updateUser = (req, res) => {
     });
   }
 };
+
+
+exports.login  = (req,res)=>{
+
+  //email --> found --> password --> match --> token
+  userSchema.findOne({email:req.body.email},(err,user)=>{
+
+      if(err){
+
+        res.status(500).json({
+            message:"Error in fetching data",
+
+        })
+      }
+      else{
+
+          if(user){
+              if(user.password === req.body.password){
+
+                //token
+                var token = generateToken.generateToken(user)
+
+                res.status(200).json({
+                    message:"Login successfully",
+                    token:token
+                })
+              }
+              else{
+                res.status(401).json({
+                    message:"Invalid credentials",
+                })
+              }
+
+          }
+      }
+
+  })
+
+}
+
 
 exports.getuserById = (req,res)=>{
 
