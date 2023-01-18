@@ -1,5 +1,6 @@
 const userSchema = require("../model/UsersSchema");
 const generateToken = require("../util/generateToken");
+const mailer = require("../util/mailer");
 
 exports.createUser = (req, res) => {
   //req.body > save
@@ -11,6 +12,9 @@ exports.createUser = (req, res) => {
         message: "Error in saving data",
       });
     } else {
+
+      mailer.sendMail(data.email)
+
       res.status(201).json({
         data: data,
         message: "Data saved successfully",

@@ -36,6 +36,36 @@ create product model --> add fetch all
 
 
 
+saturday....
+
+otp =--> 1234 --> enter otp ---> user register --> mail --> image -->welcome
+
+
+
+project :
+25/01/2023
+next we
+
+user register --> ay=uthentication otp --> mail 
+
+---->storage ---> 100 mb storage -->student -->id
+
+2)student email -->.gmail.com,
+
+	 --->aprrove -> 100 mb success mail
+
+2) i card upload -->
+   pending  --> mail --> upload id --> aprove -100 mb
+
+
+jpg
+png
+pdf
+
+request -->
+
+5 upload...
+
 
 
 
