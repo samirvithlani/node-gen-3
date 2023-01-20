@@ -12,10 +12,11 @@ const uploadRoutes = require("./routes/UploadRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const roleRoutes = require("./routes/RoleRoutes");
 const signupRoutes = require("./routes/SignupRoutes");
+require('dotenv').config()
 //create server using express
 app.use(express.json())
+const PORT = process.env.PORT || 3000;
 
-const PORT = 3000;
 
 app.use('/user',userRouter)
 app.use('/department',departmentRoutes)
