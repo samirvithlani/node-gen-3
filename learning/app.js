@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser'); 
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
 
 const userRouter = require("./routes/UserRoutes");
 const departmentRoutes = require("./routes/DepartmentRoutes");
@@ -12,6 +14,7 @@ const uploadRoutes = require("./routes/UploadRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const roleRoutes = require("./routes/RoleRoutes");
 const signupRoutes = require("./routes/SignupRoutes");
+
 require('dotenv').config()
 //create server using express
 app.use(express.json())
@@ -31,6 +34,30 @@ app.use('/signup',signupRoutes)
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT);
 })
+
+const options ={
+    definition:{
+        openapi:"3.0.0",
+        info:{
+            title:"User API",
+            version:"1.0.0",
+            description:"User API Information",
+            contact:{
+                name:"Sachin",
+                email:"sachin@gmail.com",
+                url:"http://localhost:3000"
+            },
+            servers:[
+                {
+                    url:"http://localhost:3000"
+                }
+            ]
+        },
+        
+    },
+    apis:["./routes/*.js"]
+}
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerJsDoc(options)))
 //3000 <-local system 127.0.0.1:3000 
 //esablish db connection using mongoose
 mongoose.connect("mongodb://127.0.0.1:27017/mongogen",{

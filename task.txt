@@ -68,5 +68,8 @@ request -->
 
 
 
+GENERATE TOKEN AND ENCRYPT IT
+:-----
 
-
+GENERATE TOKEN databse store....
+role bind --> admin 
