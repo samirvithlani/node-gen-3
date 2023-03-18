@@ -4,10 +4,10 @@ const generateToken = (user) => {
   return jwt.sign({ user }, secret, {
     expiresIn: "1h",
     algorithm: "HS256",
-    audience: ["http://localhost:3000"],
-    issuer: "http://localhost:3000",
-    subject: "user",
-    allowInsecureKeySizes: true,
+    // audience: ["http://localhost:3000"],
+    // issuer: "http://localhost:3000",
+    // subject: "user",
+    // allowInsecureKeySizes: true,
   });
 };
 

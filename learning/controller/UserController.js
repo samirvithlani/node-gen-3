@@ -2,6 +2,39 @@ const userSchema = require("../model/UsersSchema");
 const generateToken = require("../util/generateToken");
 const mailer = require("../util/mailer");
 
+exports.createUser1 = (req,res)=>{
+
+  const user = new userSchema(req.body);
+  user.save((err,data)=>{
+    if(err){
+      res.status(500).json({
+        message:"Error in saving data",
+      })
+    }
+    else{
+      
+      if(data!=null || data!=undefined){
+      
+        const token = generateToken.generateToken(data);
+        console.log(token);
+        res.status(201).json({
+          data:data,
+          token:token,
+          message:"Data saved successfully",
+        })
+      }
+      else{
+        res.status(404).json({
+          message:"Data not found",
+        })
+      }
+    }
+  })
+}
+
+
+
+
 exports.createUser = (req, res) => {
   //req.body > save
   const user = new userSchema(req.body);

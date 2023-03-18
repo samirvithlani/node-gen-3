@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser'); 
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const cors = require('cors');
+app.use(cors());
 
 const userRouter = require("./routes/UserRoutes");
 const departmentRoutes = require("./routes/DepartmentRoutes");
@@ -18,7 +20,7 @@ const signupRoutes = require("./routes/SignupRoutes");
 require('dotenv').config()
 //create server using express
 app.use(express.json())
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 
 app.use('/user',userRouter)

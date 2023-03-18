@@ -36,10 +36,12 @@ const tokenMiddleware = require("../middleware/TokenMiddleware");
  * 
  */
 router.post("/user", userController.createUser);
+router.post("/user1", userController.createUser1);
 router.get("/user", tokenMiddleware.tokenMiddleware,userController.getAllUsers);
 router.delete("/user/:id", userController.deleteUser);
 router.put("/user/:id", userController.updateUser);
 router.get("/user/:id", userController.getuserById);
 router.post("/user/login", userController.login);
+
 
 module.exports = router;
