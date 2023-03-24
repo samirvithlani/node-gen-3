@@ -16,6 +16,7 @@ const uploadRoutes = require("./routes/UploadRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const roleRoutes = require("./routes/RoleRoutes");
 const signupRoutes = require("./routes/SignupRoutes");
+const authTokenRoutes = require("./routes/AuthTokenRoutes");
 
 require('dotenv').config()
 //create server using express
@@ -32,6 +33,7 @@ app.use('/upload',uploadRoutes)
 app.use('/student',studentRoutes)
 app.use('/role',roleRoutes)
 app.use('/signup',signupRoutes)
+app.use('/authToken',authTokenRoutes)
 
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT);
